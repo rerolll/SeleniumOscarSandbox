@@ -1,4 +1,4 @@
-package selenium1.qa.tests;
+package selenium1.qa.test;
 
 import gurock.testrail.APIException;
 
@@ -8,11 +8,12 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+
 import selenium1.qa.pages.helper.LoginPageHelper;
 
 import java.io.IOException;
 
-public class LoginPageTests extends BaseTest {
+public class LoginPageTest extends BaseTest {
     LoginPageHelper loginPageHelper;
 
 

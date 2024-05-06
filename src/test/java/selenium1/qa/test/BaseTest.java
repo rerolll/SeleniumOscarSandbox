@@ -1,4 +1,4 @@
-package selenium1.qa.tests;
+package selenium1.qa.test;
 
 import gurock.testrail.APIClient;
 import gurock.testrail.APIException;
@@ -70,8 +70,8 @@ public class BaseTest {
     }
     @AfterMethod
     public void RdyForNewTest(){
+        driver.manage().deleteAllCookies();
         driver.get(baseUrl);
-        homePageHelper.waitUntilPageIsLoaded();// а нужно ли если есть wait time
     }
     @AfterSuite
     public void teardown(){

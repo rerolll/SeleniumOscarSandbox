@@ -1,4 +1,4 @@
-package selenium1.qa.tests;
+package selenium1.qa.test;
 
 import gurock.testrail.APIException;
 
@@ -12,7 +12,7 @@ import selenium1.qa.pages.helper.BasketPageHelper;
 
 import java.io.IOException;
 
-public class BasketPageTests extends BaseTest {
+public class BasketPageTest extends BaseTest {
     BasketPageHelper basketPageHelper;
 
     @BeforeMethod
