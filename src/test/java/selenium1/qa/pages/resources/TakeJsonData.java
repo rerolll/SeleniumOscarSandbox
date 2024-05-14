@@ -1,8 +1,10 @@
 package selenium1.qa.pages.resources;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class TakeJsonData {
@@ -10,11 +12,11 @@ public class TakeJsonData {
         try {
             FileReader reader = new FileReader("config.json");
             JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
-            String temp = jsonObject.get(data).getAsString();
-            return temp;
-        } catch (Exception e) {
-            e.printStackTrace();
+            return jsonObject.get(data).getAsString();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("File not found", e);
+        } catch (JsonParseException e) {
+            throw new RuntimeException("Json parsing error", e);
         }
-        return "error";//Sdelay normalno
     }
 }

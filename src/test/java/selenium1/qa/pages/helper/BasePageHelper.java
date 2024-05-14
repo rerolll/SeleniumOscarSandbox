@@ -32,17 +32,7 @@ public abstract class BasePageHelper {
         }
     }
 
-    public boolean isElementPresent(WebElement element) {
-        try {
-            element.isDisplayed();
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
     public void go_to_login_page(){
         login_link.click();
     }
-
 }

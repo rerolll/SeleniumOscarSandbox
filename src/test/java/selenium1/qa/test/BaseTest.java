@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -19,7 +18,6 @@ import selenium1.qa.pages.helper.HomePageHelper;
 import selenium1.qa.pages.resources.TakeJsonData;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +25,6 @@ import java.util.Map;
 public class BaseTest {
     public static WebDriver driver;
     public static ChromeOptions chromeOptions;
-    public static WebDriverWait wait;
-    public static Duration WAIT_TIME = Duration.ofSeconds(20);
 
     protected static String baseUrl = "https://selenium1py.pythonanywhere.com/ru/catalogue/";
 
@@ -61,8 +57,6 @@ public class BaseTest {
         chromeOptions.addArguments("--headless=new");
         chromeOptions.addArguments("window-size=1920, 1080");
         driver = new ChromeDriver(chromeOptions);
-
-        wait = new WebDriverWait(driver, WAIT_TIME);
 
         homePageHelper = PageFactory.initElements(driver, HomePageHelper.class);
         driver.get(baseUrl);

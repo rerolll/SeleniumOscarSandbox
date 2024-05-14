@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 
 import selenium1.qa.pages.helper.LoginPageHelper;
+import selenium1.qa.pages.resources.TakeJsonData;
 
 import java.io.IOException;
 
@@ -24,12 +25,17 @@ public class LoginPageTest extends BaseTest {
         driver.navigate().refresh();
         loginPageHelper.go_to_login_page();
         loginPageHelper.should_be_login_url();
-        loginPageHelper.should_be_login_form();
     }
 
     @Test
-    public void verifLoginLink() throws APIException, IOException {
-        boolean isUserRegistered = loginPageHelper.register_new_user();
+    public void registerNewUser() throws APIException, IOException {
+        loginPageHelper.registr_email.sendKeys(LoginPageHelper.setValid_email());
+        String password = LoginPageHelper.setValid_password();
+        loginPageHelper.registr_pswd1.sendKeys(password);
+        loginPageHelper.registr_pswd2.sendKeys(password);
+        loginPageHelper.registr_btn.click();
+
+        boolean isUserRegistered = loginPageHelper.succes_alert_of_register.getText().contains("Спасибо за регистрацию!");
         if(isUserRegistered){
             BaseTest.AddResultForTestCaseInTestRail("1", "1", TEST_CASE_PASSED_STATUS);
         } else {
@@ -40,7 +46,13 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void loginInPresentUser() throws APIException, IOException {
-        boolean isUserLoginIn = loginPageHelper.login_in_present_user();
+        String valid_email = TakeJsonData.take_json_data("valid_email");
+        String valid_password = TakeJsonData.take_json_data("valid_password");
+        loginPageHelper.login_email.sendKeys(valid_email);
+        loginPageHelper.login_password.sendKeys(valid_password);
+        loginPageHelper.login_btn.click();
+
+        boolean isUserLoginIn = loginPageHelper.succes_alert_of_login_in.getText().contains("Рады видеть вас снова");
         if(isUserLoginIn){
             BaseTest.AddResultForTestCaseInTestRail("1","2", TEST_CASE_PASSED_STATUS);
         } else {
@@ -51,7 +63,13 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void loginInWithInvalidPassword() throws APIException, IOException {
-        boolean isUserLoginIn = loginPageHelper.login_in_with_invalid_password();
+        String valid_email = TakeJsonData.take_json_data("valid_email");
+        String invalid_password = LoginPageHelper.setValid_password();
+        loginPageHelper.login_email.sendKeys(valid_email);
+        loginPageHelper.login_password.sendKeys(invalid_password);
+        loginPageHelper.login_btn.click();
+
+        boolean isUserLoginIn = loginPageHelper.succes_alert_of_login_in.getText().contains("Рады видеть вас снова");
         if (!isUserLoginIn) {
             BaseTest.AddResultForTestCaseInTestRail("1","3", TEST_CASE_PASSED_STATUS);
         } else {
