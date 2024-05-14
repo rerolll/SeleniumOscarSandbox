@@ -7,7 +7,7 @@
 ```
 https://github.com/rerolll/SeleniumOscarSandbox.git
 ```
-- В корне проекта добавить файл config.json
+- В корне проекта создать файл config.json
 ```
   Пример для секретного файла
 {
