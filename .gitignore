@@ -40,3 +40,6 @@ build/
 
 ### Data ###
 config.json
+
+### Allure ###
+.allure
