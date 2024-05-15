@@ -10,7 +10,8 @@ import java.io.FileReader;
 public class TakeJsonData {
     public static String take_json_data(String data){
         try {
-            FileReader reader = new FileReader("config.json");
+            String configPath = System.getenv("CONFIG_PATH");
+            FileReader reader = new FileReader(configPath);
             JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
             return jsonObject.get(data).getAsString();
         } catch (FileNotFoundException e) {
