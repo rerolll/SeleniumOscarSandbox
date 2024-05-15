@@ -42,4 +42,4 @@ build/
 config.json
 
 ### Allure ###
-..allure
+!.allure
