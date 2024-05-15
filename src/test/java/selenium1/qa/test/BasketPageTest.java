@@ -52,7 +52,5 @@ public class BasketPageTest extends BaseTest {
                 "Цена продукта в корзине не совпадает с добавленным");
         Assert.assertTrue((basketPageHelper.name_first_product_in_basket.getText().contains(added_product_name)),
                 "Имя продукта в корзине не совпадает с добавленным");
-
-
     }
 }
