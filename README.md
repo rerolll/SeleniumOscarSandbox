@@ -1,6 +1,6 @@
 # SeleniumOscarSandbox
 Доброго времени суток, рад видеть вас в моем проекте CV!
-Этот проект покажет вам мои знания в работе с Java, Selenium WebDriver, Selenium Grid, Jenkins, JIRA, Docker, IntelliJ IDEA, Page Object, Ubuntu и, конечно же, GitHub!
+Этот проект покажет вам мои знания в работе с Java, Selenium WebDriver, Selenium Grid, Jenkins, JIRA, Docker, IntelliJ IDEA, Page Object, Ubuntu, Allure и, конечно же, GitHub!
 
 # Как запустить проект на компьютере:
 - Клонировать репозиторий:
@@ -65,10 +65,10 @@ docker pull seleniarm/standalone-chromium //Скачивает образ Seleni
 docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" seleniarm/standalone-chromium //Запускает контейнер Docker собразом Selenium Standalone Server с ChromeDriver на портах 4444 и 7900, с размером виртуальной памяти 2гб.
 ```
 Теперь нам должен быть доступен:
-- Jenkins по адресу <ip вашего сервера>:8080
-- Selenium Grid по адресу <ip вашего сервера>:4444
+- Jenkins по адресу: <ip вашего сервера>:8080
+- Selenium Grid по адресу: <ip вашего сервера>:4444
 
-Нам нужно настроить jenkins
+Настроим jenkins
 ```
 /var/lib/jenkins/secrets/initialAdminPassword
 ```
@@ -80,9 +80,9 @@ docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" seleniarm/standalone-chr
 - Указать Repository URL
 - Добавить Credentials для доступа jenkins к git
 // если не работает ssh: Настройки Jenkins > Security > Git Host Key Verification Configuration > Host Key Verification Strategy > No verification
-- Указать */remote в Branches to build
+- Указать */remote_docker в Branches to build
 - В среде сборки создать секретный файл с Variable = CONFIG_PATH
-  ```
+```
   Пример для секретного файла
   {
   "valid_email": "213123212@mail.ru",
@@ -91,9 +91,13 @@ docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" seleniarm/standalone-chr
   "testRail_password": "Password!",
   "testRail_baseUrl": "https://rerolll.testrail.io/",
   }
-  ```
+```
 - Добавить шаг сборки Выполнить команду shell
-  ```
+```
   mvn clean test -DUrlChrome=http://<ip вашего сервера>:4444/wd/hub
-  ```
+```
   
+Посмотреть мой Jenkins 
+```
+http://95.143.188.206:8080/
+```
