@@ -33,8 +33,8 @@ public class LoginPageTest extends BaseTest {
 
         Test testAnnotation = method.getAnnotation(Test.class);
         testCaseId = testAnnotation.description();
-
     }
+
     @AfterMethod
     public void addTestResult(ITestResult result) throws APIException, IOException {
         int resultStatus;
@@ -48,14 +48,12 @@ public class LoginPageTest extends BaseTest {
     }
 
     @Test(description = "1")
-    public void registerNewUser() throws APIException, IOException {
-        String testCaseId = "1";
+    public void registerNewUser() {
         loginPageHelper.registr_email.sendKeys(LoginPageHelper.setValid_email());
         String password = LoginPageHelper.setValid_password();
         loginPageHelper.registr_pswd1.sendKeys(password);
         loginPageHelper.registr_pswd2.sendKeys(password);
         loginPageHelper.registr_btn.click();
-        // Allure
         Assert.assertTrue(loginPageHelper.succes_alert_of_register.getText().contains("Спасибо за регистрацию!"));
     }
 
@@ -76,7 +74,6 @@ public class LoginPageTest extends BaseTest {
         loginPageHelper.login_email.sendKeys(valid_email);
         loginPageHelper.login_password.sendKeys(invalid_password);
         loginPageHelper.login_btn.click();
-
         Assert.assertFalse(loginPageHelper.succes_alert_of_login_in.getText().contains("Рады видеть вас снова"));
     }
 
