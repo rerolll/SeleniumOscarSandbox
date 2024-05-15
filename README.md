@@ -1,6 +1,6 @@
 # SeleniumOscarSandbox
 Доброго времени суток, рад видеть вас в моем проекте CV!
-Этот проект покажет вам мои знания в работе с Java, Selenium WebDriver, Selenium Grid, Jenkins, JIRA, Docker, IntelliJ IDEA, Page Object, Ubuntu и, конечно же, GitHub!
+Этот проект покажет вам мои знания в работе с Java, Selenium WebDriver, Selenium Grid, Jenkins, JIRA, Docker, IntelliJ IDEA, Page Object, Ubuntu, Allure и, конечно же, GitHub!
 
 # Как запустить проект на компьютере:
 - Клонировать репозиторий:
