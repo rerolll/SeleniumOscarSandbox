@@ -39,7 +39,7 @@ public class BasketPageTest extends BaseTest {
     }
 
     @Test(description = "4")
-    public void add_to_basket() throws APIException, IOException {
+    public void add_to_basket() {
         basketPageHelper.btn_add_to_basket_third_product.click();
         String added_product_name = basketPageHelper.name_of_third_product.getText();
         String added_product_price = basketPageHelper.price_of_third_product.getText();
