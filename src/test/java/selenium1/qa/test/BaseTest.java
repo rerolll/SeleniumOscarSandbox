@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import org.testng.annotations.AfterMethod;
@@ -18,15 +19,18 @@ import selenium1.qa.pages.helper.HomePageHelper;
 import selenium1.qa.pages.resources.TakeJsonData;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class BaseTest {
-    public static WebDriver driver;
+    public static RemoteWebDriver driver;
     public static ChromeOptions chromeOptions;
 
     protected static String baseUrl = "https://selenium1py.pythonanywhere.com/ru/catalogue/";
+    public static String remote_url_chrome = System.getProperty("UrlChrome");
 
 
     public static String TestRailUsername = TakeJsonData.take_json_data("testRail_email");
@@ -51,12 +55,12 @@ public class BaseTest {
 
 
     @BeforeSuite
-    public void initWebDriver(){
+    public void initWebDriver() throws MalformedURLException {
         WebDriverManager.chromedriver().setup();
         chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless=new");
         chromeOptions.addArguments("window-size=1920, 1080");
-        driver = new ChromeDriver(chromeOptions);
+        driver = new RemoteWebDriver(new URL(remote_url_chrome), chromeOptions);
 
         homePageHelper = PageFactory.initElements(driver, HomePageHelper.class);
         driver.get(baseUrl);
